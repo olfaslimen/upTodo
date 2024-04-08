@@ -3,6 +3,7 @@
     <v-list-item
       @click="$store.commit('doneTask', task.id)"
       :class="{ 'red lighten-5' : task.done }"
+      :ripple="false"
     >
       <template v-slot:default>
         <v-list-item-action>
@@ -30,6 +31,18 @@
         <v-list-item-action>
           <task-menu :task="task" />
         </v-list-item-action>
+        <!-- sort buttom   -->
+        <v-list-item-action
+        v-if="$store.state.sorting"
+        >
+          <v-btn
+          color="#E57373"
+          icon
+          class="handle"
+          >
+          <v-icon>mdi-drag-horizontal-variant</v-icon>
+          </v-btn>
+        </v-list-item-action>
       </template>
 
     </v-list-item>
@@ -41,6 +54,7 @@
 <script>
 import { format } from 'date-fns'
 
+
 export default {
   props: ['task'],
   filters: {
@@ -49,7 +63,7 @@ export default {
     }
   },
   components: {
-    'task-menu': require('@/components/Todo/TaskMenu.vue').default
+    'task-menu': require('@/components/Todo/TaskMenu.vue').default,
   }
 }
 </script>

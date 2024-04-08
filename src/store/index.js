@@ -30,7 +30,9 @@ export default new Vuex.Store({
     snackbar: {
       show: false,
       text: ''
-    }
+    },
+    //state prop used by sorting btn
+    sorting: false,
   },
   mutations: {
     setSearch(state, value) {
@@ -74,6 +76,14 @@ export default new Vuex.Store({
     },
     hideSnackbar(state) {
       state.snackbar.show = false
+    },
+    //sorting mutation
+    taskSorting(state){
+      state.sorting=!state.sorting;
+    },
+    updateTasks(state,tasks){
+
+state.tasks=tasks;  
     }
   },
   actions: {

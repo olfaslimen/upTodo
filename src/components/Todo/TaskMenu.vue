@@ -77,6 +77,13 @@ export default {
         click() {
           this.dialogs.delete = true
         }
+      },
+      {
+        title: 'Changer priorité',
+        icon: 'mdi-drag-horizontal-variant',
+        click() {
+          this.$store.commit('taskSorting')
+        }
       }
     ],
   }),
